@@ -1,0 +1,25 @@
+model:
+  name: "distilgpt2"
+  dtype: "float16"
+
+lora:
+  r: 16
+  alpha: 32
+  dropout: 0.05
+  target_modules: ["c_attn", "c_proj"]
+
+data:
+  dataset: "truthful_qa"
+  split: "validation"
+  n_samples: 400
+  n_prompts: 256
+  max_length: 64
+
+training:
+  batch_size: 8
+  epochs: 3
+  lr: 0.0003
+  fp16: true
+
+output:
+  dir: "outputs"
